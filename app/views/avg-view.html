@@ -1,0 +1,20 @@
+<!-- avg view -->
+<div ng-controller="avgController">
+
+  <div class="inputarea">
+    <p>Input some numbers!</p>
+    
+    <form name="numForm" ng-submit="calc(inputVals)">
+      <input type="text" required ng-model="inputVals">
+      <input type="submit">
+    </form>
+  </div>
+
+  <div class="outputarea" ng-show="displaySorted(inputVals)">
+    <p>You've input: {{displaySorted(inputVals)}}</p>
+    <p>Mean: {{calcMean(inputVals)}}</p>
+    <p>Median: {{calcMedian(inputVals)}}</p>
+    <p>Mode: {{calcMode(inputVals)}}</p>
+  </div>
+
+</div>
