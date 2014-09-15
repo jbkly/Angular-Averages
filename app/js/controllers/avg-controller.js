@@ -57,5 +57,30 @@ module.exports = function(app) {
         return (el1 + el2) / 2;
       };
     };
+
+    $scope.calcMode = function(inputString) {
+      var numArray = $scope.sanitize(inputString);
+      if (!numArray) return null;
+      // Assumes multiple modes possible. If all inputs unique, all are modes.
+      var modeMap = {},
+          maxCount = 0, 
+          modes = [numArray[0]];
+
+      for(var i = 0; i < numArray.length; i++) {
+        var el = numArray[i];
+        
+        if (modeMap[el] == null) { modeMap[el] = 1; }
+        else { modeMap[el]++; }
+
+        if (modeMap[el] > maxCount) {
+          modes = [el];
+          maxCount = modeMap[el];
+        } else if (modeMap[el] == maxCount) {
+          modes.push(el);
+          maxCount = modeMap[el];
+        }
+      }
+      return $scope.stringify($scope.sortify(modes));
+    };
   });
 };

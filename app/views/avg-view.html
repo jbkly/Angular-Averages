@@ -2,7 +2,8 @@
 <div ng-controller="avgController">
 
   <div class="inputarea">
-    <p>Input some numbers!</p>
+    <p>Instantly get the mean, median, and mode of a series of numbers.</p>
+    <p>Come on, input some numbers!</p>
     
     <form name="numForm" ng-submit="calc(inputVals)">
       <input type="text" required ng-model="inputVals">
@@ -14,7 +15,7 @@
     <p>You've input: {{displaySorted(inputVals)}}</p>
     <p>Mean: {{calcMean(inputVals)}}</p>
     <p>Median: {{calcMedian(inputVals)}}</p>
-    <p>Mode: {{calcMode(inputVals)}}</p>
+    <p>Mode(s): {{calcMode(inputVals)}}</p>
   </div>
 
 </div>
