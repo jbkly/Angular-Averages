@@ -8,12 +8,14 @@ var avgApp = angular.module('avgApp', ['ngRoute']);
 // controller(s)
 require('./controllers/avg-controller')(avgApp);
 
-// filter(s)
-
 // service(s)
+require('./services/calc-service')(avgApp);
 
 // directive(s)
 
+// filter(s)
+
+// router
 avgApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
