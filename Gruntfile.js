@@ -9,6 +9,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.initConfig({
     clean: {
@@ -30,7 +31,7 @@ module.exports = function(grunt) {
     browserify: {
       dev: {
         options: {
-          transform: ['debowerify'],
+          transform: ['debowerify', 'browserify-ngannotate'],
           debug: true
         },
         src: ['app/js/**/*.js'],
@@ -43,6 +44,17 @@ module.exports = function(grunt) {
         },
         src: ['test/angular/**/*test.js'],
         dest: 'test/angular-testbundle.js'
+      }
+    },
+
+    uglify: {
+      options: {
+        mangle: false
+      },
+      dev: {
+        files: {
+          'build/bundle.js': ['build/bundle.js']
+        }
       }
     },
 
@@ -96,7 +108,7 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'copy:dev']);
+  grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'uglify:dev', 'copy:dev']);
   grunt.registerTask('angulartest', ['browserify:angulartest', 'karma:unit']);
   grunt.registerTask('angulartestwatch', ['angulartest', 'watch:angulartest']);
   grunt.registerTask('test', ['angulartest', 'simplemocha']);
