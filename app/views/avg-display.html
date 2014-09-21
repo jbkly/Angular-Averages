@@ -3,13 +3,13 @@
   <p>Come on, input some numbers!</p>
   
   <form name="numForm">
-    <input type="text" required ng-model="inputVals">
+    <input class="numInput" type="text" required ng-model="inputVals">
   </form>
 </div>
 
 <div class="outputarea" ng-show="displaySorted(inputVals)">
-  <p>You've input: {{displaySorted(inputVals)}}</p>
-  <p>Mean: {{calcMean(inputVals)}}</p>
-  <p>Median: {{calcMedian(inputVals)}}</p>
-  <p>Mode(s): {{calcMode(inputVals)}}</p>
+  <p><strong>You've input:</strong> {{displaySorted(inputVals)}}</p>
+  <p><strong>Mean:</strong> {{calcMean(inputVals)}}</p>
+  <p><strong>Median:</strong> {{calcMedian(inputVals)}}</p>
+  <p><strong>Mode(s):</strong> {{calcMode(inputVals)}}</p>
 </div>
