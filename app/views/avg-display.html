@@ -1,0 +1,15 @@
+<div class="inputarea">
+  <p>Instantly get the mean, median, and mode of a series of numbers.</p>
+  <p>Come on, input some numbers!</p>
+  
+  <form name="numForm">
+    <input type="text" required ng-model="inputVals">
+  </form>
+</div>
+
+<div class="outputarea" ng-show="displaySorted(inputVals)">
+  <p>You've input: {{displaySorted(inputVals)}}</p>
+  <p>Mean: {{calcMean(inputVals)}}</p>
+  <p>Median: {{calcMedian(inputVals)}}</p>
+  <p>Mode(s): {{calcMode(inputVals)}}</p>
+</div>

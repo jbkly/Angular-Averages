@@ -5,7 +5,7 @@ module.exports = function(app) {
 
     // sanitize input to only recognize numbers
     var sanitize = function(inputString) {
-      if (!inputString) return null; // early returns to prevent console errors
+      if (!inputString) return null; // early return to prevent console errors
       var strArray = inputString.match(/-?\.?[0-9]+\.?[0-9]*/g);
       if (!strArray) return null; // same, prevent console errors
       var numArray = strArray.map(parseFloat);
@@ -26,7 +26,6 @@ module.exports = function(app) {
 
     // calc object passed to controller
     var calc = {
-
       displaySorted: function(inputString) {
         if (!inputString || !sanitize(inputString)) return null;
         return stringify(sortify(sanitize(inputString)));
@@ -63,7 +62,8 @@ module.exports = function(app) {
       calcMode: function(inputString) {
         var numArray = sanitize(inputString);
         if (!numArray) return null;
-        // Assumes multiple modes possible. If all inputs unique, all are modes.
+        // Assumes multiple modes possible. 
+        // If all inputs unique, all are modes.
         var modeMap = {},
             maxCount = 0, 
             modes = [numArray[0]];
@@ -85,7 +85,6 @@ module.exports = function(app) {
         return stringify(sortify(modes));
       }
     };
-
     return calc;
   });
 };
